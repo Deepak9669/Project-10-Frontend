@@ -8,8 +8,8 @@ import { EndpointServiceService } from './endpoint-service.service';
 import { HttpServiceService } from './http-service.service';
 import { RoleComponent } from './role/role.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DashboardComponent } from './dashbord/dashboard.component'; 
-import { RouterModule } from '@angular/router'; 
+import { DashboardComponent } from './dashbord/dashboard.component';
+import { RouterModule } from '@angular/router';
 import { ServiceLocatorService } from './service-locator.service';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
@@ -18,8 +18,18 @@ import { StudentComponent } from './student/student.component';
 import { MarksheetComponent } from './marksheet/marksheet.component';
 import { CourseComponent } from './course/course.component';
 import { SubjectComponent } from './subject/subject.component';
-import { TmetableComponent } from './tmetable/tmetable.component';
-import { FooterComponent } from './footer/footer.component'; 
+import { TimetableComponent } from './timetable/timetable.component';
+import { FooterComponent } from './footer/footer.component';
+import { RoleListComponent } from './role/role-list.component';
+import { UserListComponent } from './user/user-list.component';
+import { MarksheetListComponent } from './marksheet/marksheet-list.component';
+import { StudentListComponent } from './student/student-list.component';
+import { SubjectListComponent } from './subject/subject-list.component';
+import { CourseListComponent } from './course/course-list.component';
+import { TimetableListComponent } from './timetable/timetable-list.component';
+import { CollegeListComponent } from './college/college-list.component';
+import { FacultyComponent } from './faculty/faculty.component';
+import { FacultyListComponent } from './faculty/faculty-list.component';
 
 
 @NgModule({
@@ -34,8 +44,18 @@ import { FooterComponent } from './footer/footer.component';
     MarksheetComponent,
     CourseComponent,
     SubjectComponent,
-    TmetableComponent,
-    FooterComponent
+    TimetableComponent,
+    FooterComponent,
+    RoleListComponent,
+    UserListComponent,
+    MarksheetListComponent,
+    StudentListComponent,
+    SubjectListComponent,
+    CourseListComponent,
+    TimetableListComponent,
+    CollegeListComponent,
+    FacultyComponent,
+    FacultyListComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +65,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule
   ],
   providers: [
-     HttpServiceService,
+    HttpServiceService,
     EndpointServiceService,
     ServiceLocatorService
   ],

@@ -1,6 +1,6 @@
 <div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add User</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update User</h1>
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Faculty</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Faculty</h1>
 
     <div style="height: 20px; margin-bottom: 10px; text-align: center;">
         <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
@@ -22,16 +22,9 @@
         </tr>
 
         <tr>
-            <th align="left">Login Id<span style="color: red">*</span></th>
-            <td><input type="text" name="loginId" [(ngModel)]="form.data.loginId" placeholder="Enter Login ID"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.loginId}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">Password<span style="color: red">*</span></th>
-            <td><input type="password" name="password" [(ngModel)]="form.data.password" placeholder="Enter Password">
-            </td>
-            <td style="position: fixed; color: red;">{{form.inputerror.password}}</td>
+            <th align="left">Email<span style="color: red">*</span></th>
+            <td><input type="text" name="email" [(ngModel)]="form.data.email" placeholder="Enter Email ID"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.email}}</td>
         </tr>
 
         <tr>
@@ -54,40 +47,50 @@
         </tr>
 
         <tr>
-            <th align="left">Role<span style="color: red">*</span></th>
-            <td>
-                <select name="roleId" [(ngModel)]="form.data.roleId" style="width: 170px;">
-                    <option value="undefined">------------Select------------</option>
-                    <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">{{obj.value}}</option>
-                </select>
-            </td>
-            <td style="position: fixed; color: red;">{{form.inputerror.roleId}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">Mobile<span style="color: red">*</span></th>
-            <td><input type="text" name="phone" [(ngModel)]="form.data.phone" maxlength="10"
+            <th align="left">Mobile No<span style="color: red">*</span></th>
+            <td><input type="text" name="phoneNo" [(ngModel)]="form.data.phoneNo" maxlength="10"
                     placeholder="Enter Mobile No."></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.phone}}</td>
+            <td style="position: fixed; color: red;">{{form.inputerror.phoneNo}}</td>
         </tr>
 
         <tr>
-            <th align="left">Alternate Mobile<span style="color: red">*</span></th>
-            <td><input type="text" name="alternateMobile" [(ngModel)]="form.data.alternateMobile" maxlength="10"
-                    placeholder="Enter Alternate Mobile No."></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.alternateMobile}}</td>
+            <th align="left">Qualification<span style="color: red">*</span></th>
+            <td><input type="text" name="qualification" [(ngModel)]="form.data.qualification"
+                    placeholder="Enter qualification"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.qualification}}</td>
         </tr>
 
         <tr>
-            <th align="left">Status<span style="color: red">*</span></th>
+            <th align="left">College<span style="color: red">*</span></th>
             <td>
-                <select name="status" [(ngModel)]="form.data.status" style="width: 170px;">
+                <select name="collegeId" [(ngModel)]="form.data.collegeId" style="width: 170px;">
                     <option value="undefined">------------Select------------</option>
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
+                    <option *ngFor="let obj of form.preload.collegeList" [value]="obj.key">{{obj.value}}</option>
                 </select>
             </td>
-            <td style="position: fixed; color: red;">{{form.inputerror.status}}</td>
+            <td style="position: fixed; color: red;">{{form.inputerror.collegeId}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Course<span style="color: red">*</span></th>
+            <td>
+                <select name="courseId" [(ngModel)]="form.data.courseId" style="width: 170px;">
+                    <option value="undefined">------------Select------------</option>
+                    <option *ngFor="let obj of form.preload.courseList" [value]="obj.key">{{obj.value}}</option>
+                </select>
+            </td>
+            <td style="position: fixed; color: red;">{{form.inputerror.courseId}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Subject<span style="color: red">*</span></th>
+            <td>
+                <select name="subjectId" [(ngModel)]="form.data.subjectId" style="width: 170px;">
+                    <option value="undefined">------------Select------------</option>
+                    <option *ngFor="let obj of form.preload.subjectList" [value]="obj.key">{{obj.value}}</option>
+                </select>
+            </td>
+            <td style="position: fixed; color: red;">{{form.inputerror.subjectId}}</td>
         </tr>
 
         <tr></tr>
@@ -96,7 +99,8 @@
             <th></th>
             <td align="left" colspan="2">
                 <button (click)="submit()">save</button> &nbsp;
-                <button (click)="forward('/userlist')">list</button>
+                <button (click)="forward('facultylist')">list</button>
+
             </td>
         </tr>
     </table>
