@@ -39,7 +39,17 @@ const routes: Routes = [
 },
 
 {
+  path : 'role/:id',
+  component: RoleComponent
+},
+
+{
   path: 'user',
+  component: UserComponent
+},
+
+{
+  path: 'user/:id',
   component: UserComponent
 },
 
@@ -47,14 +57,25 @@ const routes: Routes = [
   path: 'college',
   component: CollegeComponent
 },
-
+{
+  path: 'college/:id',
+  component: CollegeComponent
+},
 {
   path: 'student',
   component: StudentComponent
 },
-
+{
+  path: 'student/:id',
+  component: StudentComponent
+},
 {
   path: 'marksheet',
+  component: MarksheetComponent
+},
+
+{
+  path: 'marksheet/:id',
   component: MarksheetComponent
 },
 
@@ -64,7 +85,17 @@ const routes: Routes = [
 },
 
 {
+  path: 'course/:id',
+  component: CourseComponent
+},
+
+{
   path: 'subject',
+  component: SubjectComponent
+},
+
+{
+  path: 'subject/:id',
   component: SubjectComponent
 },
 
@@ -72,10 +103,20 @@ const routes: Routes = [
   path: 'timetable',
   component: TimetableComponent
 },
+
+{
+  path: 'timetable/:id',
+  component: TimetableComponent
+},
+
 {
   path: 'faculty',
   component: FacultyComponent
-},      
+}, 
+{
+  path: 'faculty/:id',
+  component: FacultyComponent
+},
 
 {
   path: 'role-list',

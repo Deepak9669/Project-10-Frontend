@@ -86,8 +86,10 @@
         <tr>
             <th></th>
             <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-                <button (click)="reset()">reset</button>
+                <button *ngIf="!form.data.id" (click)="submit()">save</button> &nbsp;
+                <button *ngIf="form.data.id" (click)="submit()">update</button> &nbsp;
+                <button *ngIf="form.data.id" (click)="forward('/timetable-list')">List</button>
+                <button *ngIf="!form.data.id"   (click)="reset()">reset</button>
             </td>
         </tr>
     </table>

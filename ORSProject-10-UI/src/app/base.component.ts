@@ -41,43 +41,62 @@ export class BaseCtl implements OnInit {
     constructor(public endpoint: String, public serviceLocator: ServiceLocatorService, public route: ActivatedRoute) {
         var _self = this;
         _self.initApi(endpoint);
+
+        serviceLocator.getPathVariable(route, function (params: any) {
+            _self.form.data.id = params["id"];
+        })
     }
 
     ngOnInit(): void {
         this.preload();
-
+        if (this.form.data.id && this.form.data.id > 0) {
+            this.display();
+        }
     }
 
     preload() {
-
-        this.serviceLocator.httpService.get(this.api.preload, (res: any) => {
+        var _self = this;
+        this.serviceLocator.httpService.get(_self.api.preload, function (res: any) {
             if (res.success) {
-                this.form.preload = res.result;
+                _self.form.preload = res.result;
+            } else {
+                _self.form.error = true;
+                _self.form.message = res.result.message;
             }
         });
     }
 
-
+    display() {
+        var _self = this;
+        this.serviceLocator.httpService.get(_self.api.get + "/" + _self.form.data.id, function (res: any) {
+            if (res.success) {
+                _self.form.data = res.result.data;
+            } else {
+                _self.form.error = true;
+                _self.form.message = res.result.message;
+            }
+        });
+    }
 
     submit() {
-
-        this.serviceLocator.httpService.post(this.api.save, this.form.data, (res: any) => {
-            this.form.message = '';
-            this.form.inputerror = {};
+        var _self = this;
+        this.serviceLocator.httpService.post(this.api.save, this.form.data, function (res: any) {
+            _self.form.message = '';
+            _self.form.inputerror = {};
             if (res.success) {
-                this.form.message = res.result.message;
-                this.form.data.id = res.result.data;
+                _self.form.message = res.result.message;
+                _self.form.data.id = res.result.data;
             } else {
-                this.form.error = true;
+                _self.form.error = true;
                 if (res.result.inputerror) {
-                    this.form.inputerror = res.result.inputerror;
+                    _self.form.inputerror = res.result.inputerror;
                 }
-                this.form.message = res.result.message;
+                _self.form.message = res.result.message;
             }
         });
     }
 
-     search() {
+    search() {
         var _self = this;
         this.serviceLocator.httpService.post(_self.api.search + "/" + _self.form.pageNo, _self.form.searchParams, function (res: any) {
             _self.form.message = '';
@@ -93,7 +112,25 @@ export class BaseCtl implements OnInit {
         });
     }
 
+    deleteMany(id: any) {
+        var _self = this;
+        this.serviceLocator.httpService.post(_self.api.deleteMany + "/" + id, this.form.searchParams, function (res: any) {
+            _self.form.message = '';
+            _self.form.list = [];
+            if (res.success) {
+                _self.form.error = false;
+                _self.form.message = res.result.message;
+                _self.form.list = res.result.data;
+                _self.form.nextListSize = res.result.nextListSize;
+            } else {
+                _self.form.error = true;
+                _self.form.message = res.result.message;
+            }
+        });
+    }
+
     forward(page: any) {
+        
         this.serviceLocator.forward(page);
     }
 
