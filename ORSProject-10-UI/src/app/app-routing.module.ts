@@ -19,6 +19,8 @@ import { MarksheetListComponent } from './marksheet/marksheet-list.component';
 import { CourseListComponent } from './course/course-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
+import { LoginComponent } from './login/login.component';
+import { SingupComponent } from './login/singup.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,14 @@ const routes: Routes = [
   path : '',
   redirectTo: '/dashboard',
   pathMatch: 'full'
+},
+{
+  path: 'login',
+  component: LoginComponent
+},
+{
+  path: 'signup',
+  component: SingupComponent
 },
 {
   path: 'dashboard',

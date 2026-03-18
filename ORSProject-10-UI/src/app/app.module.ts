@@ -30,6 +30,9 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
 import { CollegeListComponent } from './college/college-list.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
+import { LoginComponent } from './login/login.component';
+import { SingupComponent } from './login/singup.component';
+
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
     TimetableListComponent,
     CollegeListComponent,
     FacultyComponent,
-    FacultyListComponent
+    FacultyListComponent,
+    LoginComponent,
+    SingupComponent
+  
   ],
   imports: [
     BrowserModule,

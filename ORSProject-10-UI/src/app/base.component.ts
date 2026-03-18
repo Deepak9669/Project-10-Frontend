@@ -129,9 +129,8 @@ export class BaseCtl implements OnInit {
         });
     }
 
-    forward(page: any) {
-        
-        this.serviceLocator.forward(page);
+    forward(page: any) { 
+     this.serviceLocator.forward(page);
     }
 
     reset() {
