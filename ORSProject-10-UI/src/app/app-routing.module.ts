@@ -21,6 +21,7 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
 import { LoginComponent } from './login/login.component';
 import { SingupComponent } from './login/singup.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,11 @@ const routes: Routes = [
 {
   path: 'signup',
   component: SingupComponent
+},
+
+{
+  path: 'forgotpassword',
+  component: ForgotpasswordComponent
 },
 {
   path: 'dashboard',

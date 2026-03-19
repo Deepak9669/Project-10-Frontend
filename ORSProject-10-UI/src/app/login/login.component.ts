@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpServiceService } from '../http-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,25 @@ export class LoginComponent {
     inputerror: {},
   };
 
-  constructor(private httpService: HttpServiceService, private router: Router) {
+  constructor(private httpService: HttpServiceService, private router: Router, private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+
+      console.log('PARAMS 👉', params); // debug ke liye
+
+      if (params['message']) {
+        this.form.message = params['message'];
+        this.form.error = false;   // ✅ green message
+      }
+
+      if (params['errorMessage']) {
+        this.form.message = params['errorMessage'];
+        this.form.error = true;    // ❌ red message
+      }
+
+    });
   }
 
   signIn() {
@@ -43,7 +62,7 @@ export class LoginComponent {
         localStorage.setItem("lname", res.result.lname);
         localStorage.setItem("userId", res.result.data.id);
 
-         _self.router.navigateByUrl('dashboard');
+        _self.router.navigateByUrl('dashboard');
       }
     });
   }

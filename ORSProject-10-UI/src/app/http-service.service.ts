@@ -1,42 +1,40 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
-
-@Injectable()
-
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpServiceService {
 
-
-  
-
- 
-
-  constructor(private router: Router, private httpClient: HttpClient) {
-    console.log('in http service');
+  constructor(private httpClient: HttpClient, private router: Router) {
 
   }
-  
 
-  get(endpoint: any, callback: any  ) {
-    console.log('in http service GET method')
-    return this.httpClient.get(endpoint).subscribe((data) => {
-      console.log('Data :: ' + data);
+  post(endpoint: any, bean: any, callback: any) {
+    return this.httpClient.post(endpoint, bean, { withCredentials: true }).subscribe((data) => {
       callback(data);
-
+    }, (error) => {
+      this.handleError(error);
     });
   }
 
-  post(endpoint : any, bean: any, callback: any) {
-    console.log('in http service POST method')
-    
-    console.log('before http service doPost method')
-    return this.httpClient.post(endpoint, bean).subscribe((data) => {
-      console.log('data ==', data);
+  get(endpoint: any, callback: any) {
+    return this.httpClient.get(endpoint, { withCredentials: true }).subscribe((data) => {
       callback(data);
-
-    }, error => {
-      console.log('ORS Error--', error);
+    }, (error) => {
+      this.handleError(error);
     });
   }
+
+  private handleError(error: any): void {
+    console.error('Request failed', error);
+    if (error.status === 401) {
+      localStorage.clear();
+      this.router.navigate(['/login'], {
+        queryParams: { errorMessage: error.error.error }
+      });
+    }
+  }
+
 }

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EndpointServiceService } from './endpoint-service.service';
 import { HttpServiceService } from './http-service.service';
 import { RoleComponent } from './role/role.component';
@@ -32,8 +32,13 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
 import { LoginComponent } from './login/login.component';
 import { SingupComponent } from './login/singup.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -60,15 +65,22 @@ import { SingupComponent } from './login/singup.component';
     FacultyComponent,
     FacultyListComponent,
     LoginComponent,
-    SingupComponent
-  
+    SingupComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     HttpServiceService,

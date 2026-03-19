@@ -1,5 +1,5 @@
 <div align="center">
-    <h1 align="center" style="margin-bottom: 5px; color: navy;">User List</h1>
+    <h1 align="center" style="margin-bottom: 5px; color: navy;">{{'Links.UserList' | translate}}</h1>
 
     <div style="height: 20px; margin-bottom: 10px; text-align: center;">
         <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
@@ -10,22 +10,22 @@
         <table style="width: 100%">
             <tr>
                 <td align="center">
-                    <label><b>First Name: </b></label>
+                    <label><b>{{'FirstName' | translate}}: </b></label>
                     <input type="text" name="firstName" [(ngModel)]="form.searchParams.firstName"
                         placeholder="Enter First Name">&nbsp;
 
-                    <label><b>Login Id: </b></label>
+                    <label><b>{{'LoginId' | translate}}: </b></label>
                     <input type="text" name="loginId" [(ngModel)]="form.searchParams.loginId"
                         placeholder="Enter Email ID">&nbsp;
 
-                    <label><b>Role: </b></label>
+                    <label><b>{{'UserForm.Role' | translate}}: </b></label>
                     <select name="roleId" [(ngModel)]="form.searchParams.roleId" style="width: 165px;">
                         <option value="undefined">------------Select------------</option>
                         <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">{{obj.value}}</option>
                     </select>&nbsp;
 
-                    <button (click)="search()">search</button>&nbsp;
-                    <button (click)="reset()">reset</button>
+                    <button (click)="search()">{{'Buttons.Search' | translate}}</button>&nbsp;
+                    <button (click)="reset()">{{'Buttons.Reset' | translate}}</button>
                 </td>
             </tr>
         </table>
@@ -36,15 +36,15 @@
             <tr style="background-color: #e1e6f1e3;">
                 <th><input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)"  /></th>
                 <th>S.No</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Login Id</th>
-                <th>Date of Birth</th>
-                <th>Gender</th>
-                <th>Role</th>
-                <th>Mobile</th>
-                <th>Status</th>
-                <th>Edit</th>
+                <th>{{'FirstName' | translate}}</th>
+                <th>{{'LastName' | translate}}</th>
+                <th>{{'LoginId' | translate}}</th>
+                <th>{{'DateOfBirth' | translate}}</th>
+                <th>{{'Gender' | translate}}</th>
+                <th>{{'UserForm.Role' | translate}}</th>
+                <th>{{'Mobile' | translate}}</th>
+                <th>{{'Status' | translate}}</th>
+                <th>{{'Edit' | translate}}</th>
             </tr>
 
             <tr align="center" *ngFor="let m of form.list; let i = index">
