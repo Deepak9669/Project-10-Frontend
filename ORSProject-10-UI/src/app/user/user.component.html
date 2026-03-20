@@ -99,8 +99,10 @@
         <tr>
             <th></th>
             <td align="left" colspan="2">
-                <button (click)="submit()">{{ 'UserForm.Buttons.Save' | translate }}</button> &nbsp;
-                <button (click)="forward('/userlist')">{{ 'UserForm.Buttons.List' | translate }}</button>
+                <button *ngIf="!form.data.id" (click)="submit()">{{ 'UserForm.Buttons.Save' | translate }}</button> &nbsp;
+                <button *ngIf="form.data.id" (click)="submit()">update</button>
+                <button *ngIf="form.data.id" (click)="forward('/userlist')">{{ 'UserForm.Buttons.List' | translate }}</button>
+
             </td>
         </tr>
     </table>

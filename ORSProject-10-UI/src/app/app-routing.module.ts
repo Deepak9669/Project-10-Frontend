@@ -22,6 +22,8 @@ import { SubjectListComponent } from './subject/subject-list.component';
 import { LoginComponent } from './login/login.component';
 import { SingupComponent } from './login/singup.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { MyprofileComponent } from './user/myprofile.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
 
 
 const routes: Routes = [
@@ -43,6 +45,14 @@ const routes: Routes = [
 {
   path: 'forgotpassword',
   component: ForgotpasswordComponent
+},
+{
+  path: 'myprofile',
+  component: MyprofileComponent
+},
+{
+  path: 'change-password',
+  component: ChangepasswordComponent
 },
 {
   path: 'dashboard',

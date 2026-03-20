@@ -35,6 +35,9 @@ import { SingupComponent } from './login/singup.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MyprofileComponent } from './user/myprofile.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,7 +69,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FacultyListComponent,
     LoginComponent,
     SingupComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    MyprofileComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,8 @@
         <td colspan="2">
             <div *ngIf="isLogin()">
                 <a (click)="forward()"><b>{{ 'Links.MyProfile' | translate }}</b></a> |
-                <a [routerLink]="['/changepassword']"><b>{{ 'Links.ChangePassword' | translate }}</b></a> |
+                <a [routerLink]="['/change-password']"><b>{{ 'Links.ChangePassword' | translate }}</b></a> |
+                <a [routerLink]="['/myprofile']"><b>{{ 'Links.MyProfile' | translate }}</b></a> |
                 <a [routerLink]="['/user']"><b>{{ 'Links.AddUser' | translate }}</b></a> |
                 <a [routerLink]="['/user-list']"><b>{{ 'Links.UserList' | translate }}</b></a> |
                 <a [routerLink]="['/role']"><b>{{ 'Links.AddRole' | translate }}</b></a> |
